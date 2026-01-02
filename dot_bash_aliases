@@ -1,0 +1,54 @@
+# Safer file ops
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# --- Navigation ---
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# ls
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls --color=auto'
+
+# --- Git ---
+# Rest of git aliases are in ~/.gitconfig
+alias g='git'
+
+# --- Disk usage ---
+alias du1='du -h --max-depth=1'
+alias duh="du -ach | sort -h"
+alias dfh='df -h'
+alias free="free -mt"
+
+# --- Processing ---
+alias ps="ps auxf"
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias wget="wget -c"
+
+# --- Make dirs safely ---
+alias mkdirp='mkdir -p'
+
+# --- Node ---
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nr='npm run'
+alias nrs='npm run start'
+alias nrb='npm run build'
+alias nrt='npm run test'
+
+# Clear screen
+alias cls='clear'
+
+# Show PATH line-by-line (debugging)
+alias path='echo "$PATH" | tr ":" "\n"'
+
+# Reload shell config
+alias reload='source ~/.bashrc'
+
+# Grep search history
+alias histg="history | grep"
+
