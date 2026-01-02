@@ -93,7 +93,7 @@ fi
 CLR_RESET='\[\e[0m\]'
 CLR_USER='\[\e[32m\]'   # green
 CLR_PATH='\[\e[33m\]'   # yellow
-CLR_GIT='\[\e[32m\]'    # green
+CLR_GIT='\[\e[31m\]'    # red
 
 __git_branch() {
   # Prints current branch name, or nothing if not in a git repo
@@ -107,7 +107,7 @@ __git_prompt() {
   fi
 }
 
-# username (green) + space + cwd (yellow) + optional branch (green) + space + >
+# username (green) + space + cwd (yellow) + optional branch (red) + space + >
 # \w shows current path with ~ for $HOME
 PS1="${CLR_USER}\u${CLR_RESET} ${CLR_PATH}\w${CLR_RESET} ${CLR_GIT}\$(__git_prompt)${CLR_RESET} > "
 
