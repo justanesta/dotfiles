@@ -175,46 +175,9 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 
 ### NVM CONFIG ###
-# Old way to load every time interactive shells starts:
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# New way lazy-loads only when using nvm/node/npm/npx
 export NVM_DIR="$HOME/.nvm"
-
-__nvm_loaded=0
-
-__load_nvm() {
-  if [ "$__nvm_loaded" -eq 0 ]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-    __nvm_loaded=1
-  fi
-}
-
-nvm() {
-  __load_nvm
-  nvm "$@"
-}
-
-node() {
-  __load_nvm
-  unset -f node
-  node "$@"
-}
-
-npm() {
-  __load_nvm
-  unset -f npm
-  npm "$@"
-}
-
-npx() {
-  __load_nvm
-  unset -f npx
-  npx "$@"
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ### FUNCTIONS ###
 # Keep here for now but can move to seprate file as shown below:
