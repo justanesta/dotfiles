@@ -183,30 +183,37 @@ export PATH="$PATH:$HOME/.local/bin"
 # New way lazy-loads only when using nvm/node/npm/npx
 export NVM_DIR="$HOME/.nvm"
 
+__nvm_loaded=0
+
 __load_nvm() {
-  # Load nvm only once
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  if [ "$__nvm_loaded" -eq 0 ]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+    __nvm_loaded=1
+  fi
 }
 
 nvm() {
   __load_nvm
-  command nvm "$@"
+  nvm "$@"
 }
 
 node() {
   __load_nvm
-  command node "$@"
+  unset -f node
+  node "$@"
 }
 
 npm() {
   __load_nvm
-  command npm "$@"
+  unset -f npm
+  npm "$@"
 }
 
 npx() {
   __load_nvm
-  command npx "$@"
+  unset -f npx
+  npx "$@"
 }
 
 ### FUNCTIONS ###
