@@ -42,8 +42,4 @@ fi
 # eval "$(pyenv init -)"
 # export PATH="$PATH:/home/justanesta/.local/bin"
 
-# Setting desired text editor for both GUI and CLI terminals to VS code
-export EDITOR="code --wait"
-export VISUAL="code --wait"
-
 export PATH

@@ -8,6 +8,10 @@ case $- in
       *) return;;
 esac
 
+# Setting VS Code as the default editor for interactive shells
+export EDITOR="code --wait"
+export VISUAL="code --wait"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
