@@ -1,0 +1,27 @@
+{{- /* Prompt for machine type during init */ -}}
+{{- $machineChoices := list "personal-system76" "work-mac" -}}
+{{- $machine := promptChoiceOnce . "machine" "Which machine is this" $machineChoices -}}
+
+{{- /* Set derived values based on machine */ -}}
+{{- $isWork := eq $machine "work-mac" -}}
+{{- $isPersonal := eq $machine "personal-system76" -}}
+
+{{- /* Set email based on machine */ -}}
+{{- $email := "adrian@justanesta.com" -}}
+{{- if $isWork -}}
+{{-   $email = "adrian.nesta@fingerpaint.com" -}}
+{{- end -}}
+
+[data]
+    machine = {{ $machine | quote }}
+    email = {{ $email | quote }}
+    isWork = {{ $isWork }}
+    isPersonal = {{ $isPersonal }}
+    name = "Adrian Nesta"
+    github = "justanesta"
+
+{{- if $isWork }}
+
+[onepassword]
+    prompt = true
+{{- end }}
