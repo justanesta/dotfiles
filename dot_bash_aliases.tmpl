@@ -9,17 +9,26 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # ls
+{{- if eq .chezmoi.os "darwin" }}
+alias ls='ls -G'
+alias ll='ls -alFG'
+{{- else }}
+alias ls='ls --color=auto'
 alias ll='ls -alF'
+{{- end }}
 alias la='ls -A'
 alias l='ls -CF'
-alias ls='ls --color=auto'
 
 # --- Git ---
 # Rest of git aliases are in ~/.gitconfig
 alias g='git'
 
 # --- Disk usage ---
+{{- if eq .chezmoi.os "darwin" }}
+alias du1='du -h -d 1'
+{{- else }}
 alias du1='du -h --max-depth=1'
+{{- end }}
 alias duh="du -ach | sort -h"
 alias dfh='df -h'
 alias free="free -mt"
@@ -51,4 +60,3 @@ alias reload='source ~/.bashrc'
 
 # Grep search history
 alias histg="history | grep"
-
