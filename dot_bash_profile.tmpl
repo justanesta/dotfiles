@@ -1,0 +1,12 @@
+# ~/.bash_profile: executed by bash for login shells.
+# Managed by chezmoi - machine: {{ .machine }}
+
+# Source .profile for environment variables (PATH, etc.)
+if [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+
+# Source .bashrc for interactive shell settings
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
