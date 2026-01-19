@@ -1,2 +1,7 @@
 README.md
 LICENSE
+
+{{- if .isPersonal }}
+# Work-only files - ignore on personal machine
+.config/secrets/work-api-keys.env
+{{- end }}
