@@ -1,0 +1,36 @@
+---
+# Mac Applications and Tools
+# All installed via Homebrew (formulae or casks)
+
+cli_tools:
+  - gh                 # GitHub CLI
+  - pyenv              # Python version manager
+  - uv                 # Fast Python package installer
+  - pass-cli           # Password manager
+  - snowflake-cli      # Snowflake CLI
+  - 1password-cli      # 1Password CLI
+  - postgresql         # PostgreSQL database
+  - sqlite             # SQLite database
+
+gui_apps:
+  - 1password          # Password manager
+  - bruno              # API client
+  - claude             # Claude desktop app
+  - dbeaver-community  # Database management tool
+  - positron           # IDE for data science
+  - rstudio            # R IDE
+  - r                  # R programming language
+  - visual-studio-code # VS Code
+  - slack              # Team communication
+  - zoom               # Video conferencing
+  - firefox            # Web browser
+  - google-chrome      # Web browser
+  - signal             # Secure messaging
+  - discord            # Communication platform
+  - pgadmin4           # PostgreSQL admin tool
+  - db-browser-for-sqlite  # SQLite browser
+
+node:
+  # Installed after NVM is set up
+  packages:
+    - "@anthropic-ai/claude-code"  # Claude Code CLI

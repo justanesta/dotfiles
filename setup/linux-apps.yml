@@ -1,0 +1,167 @@
+---
+# Linux Applications and Tools
+# Each tool specifies its installation method
+# 
+# YAML Structure Guide:
+# - method: Installation method (apt, snap, flatpak, official, manual)
+# - package: Actual package name if different from the key name
+# - repo: Repository configuration (for apt with custom repos)
+#   - key_url: URL to GPG public key (verify on official site)
+#   - repo_line: Repository source line (verify on official site)
+#   - repo_file: Filename for /etc/apt/sources.list.d/ (you choose this)
+# - classic: true/false (for snap only - whether to use classic confinement)
+# - script: Installation command (for official install scripts)
+# - url: Download URL (for manual installations)
+# - notes: Description and additional context
+
+cli_tools:
+  git:
+    method: apt
+    notes: "Version control system - from Ubuntu default repos"
+  
+  curl:
+    method: apt
+    notes: "Command-line tool for transferring data with URLs - from Ubuntu default repos"
+  
+  gh:
+    method: apt
+    repo:
+      key_url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+      repo_line: "deb [arch=amd64 signed-by=/usr/share/keyrings/gh-keyring.gpg] https://cli.github.com/packages stable main"
+      repo_file: github-cli.list
+    notes: "GitHub CLI - official repository from GitHub. Verify at: https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
+  
+  pyenv:
+    method: official
+    script: "curl https://pyenv.run | bash"
+    notes: "Python version manager. Adds to shell config automatically. After install, add to ~/.bashrc: export PATH=\"$HOME/.pyenv/bin:$PATH\" && eval \"$(pyenv init --path)\" && eval \"$(pyenv init -)\". Official docs: https://github.com/pyenv/pyenv#installation"
+  
+  uv:
+    method: official
+    script: "curl -LsSf https://astral.sh/uv/install.sh | sh"
+    notes: "Fast Python package installer and resolver from Astral. Official docs: https://github.com/astral-sh/uv"
+  
+  pass-cli:
+    method: official
+    script: "curl -fsSL https://proton.me/download/pass-cli/install.sh | bash"
+    notes: "Proton Pass CLI. This will detect your operating system and architecture, download the latest stable release, verify binary integrity, install the binary to a directory in your PATH or prompt you to add it, check for required system dependencies. Official docs: https://protonpass.github.io/pass-cli/get-started/installation/"
+  
+  postgresql:
+    method: apt
+    package: postgresql postgresql-contrib
+    notes: "PostgreSQL database server and additional utilities - from Ubuntu default repos. Install client only with: postgresql-client"
+  
+  sqlite3:
+    method: apt
+    notes: "SQLite database engine - from Ubuntu default repos"
+
+gui_apps:
+  brave-browser:
+    method: apt
+    repo:
+      key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+      repo_line: "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
+      repo_file: brave-browser-release.list
+    notes: "Privacy-focused web browser. Official repo from Brave. Verify at: https://brave.com/linux/"
+  
+  vscode:
+    method: apt
+    package: code
+    repo:
+      key_url: https://packages.microsoft.com/keys/microsoft.asc
+      repo_line: "deb [arch=amd64 signed-by=/usr/share/keyrings/vscode-keyring.gpg] https://packages.microsoft.com/repos/code stable main"
+      repo_file: vscode.list
+    notes: "Visual Studio Code editor. Official Microsoft repository. Package name is 'code'. Verify at: https://code.visualstudio.com/docs/setup/linux"
+  
+  bruno:
+    method: snap
+    classic: true
+    notes: "Open-source API client. Snap requires classic confinement for full filesystem access. Alternative: Download .deb from https://www.usebruno.com/downloads"
+  
+  slack:
+    method: snap
+    classic: true
+    notes: "Team communication platform. Snap requires classic confinement. Alternative: Download .deb from https://slack.com/downloads/linux"
+  
+  zoom:
+    method: manual
+    url: https://zoom.us/download?os=linux
+    notes: "Video conferencing platform. Download .deb file and install with: sudo apt install ./zoom_amd64.deb (apt handles dependencies better than dpkg)"
+  
+  firefox:
+    method: apt
+    notes: "Web browser - pre-installed on most Ubuntu systems, from Ubuntu default repos"
+  
+  signal-desktop:
+    method: apt
+    repo:
+      key_url: https://updates.signal.org/desktop/apt/keys.asc
+      repo_line: "deb [arch=amd64 signed-by=/usr/share/keyrings/signal-keyring.gpg] https://updates.signal.org/desktop/apt xenial main"
+      repo_file: signal-xenial.list
+    notes: "Secure messaging app. Official Signal repository. Verify at: https://signal.org/download/"
+  
+  discord:
+    method: snap
+    classic: false
+    notes: "Voice, video, and text communication platform. Strict snap confinement. Alternative: Download .deb from https://discord.com/download"
+  
+  dbeaver-ce:
+    method: snap
+    classic: false
+    notes: "Universal database management tool. Community edition. Strict confinement. Alternative: Download from https://dbeaver.io/download/"
+  
+  pgadmin4:
+    method: apt
+    package: pgadmin4-desktop
+    repo:
+      key_url: https://www.pgadmin.org/static/packages_pgadmin_org.pub
+      repo_line: "deb [signed-by=/usr/share/keyrings/pgadmin-keyring.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main"
+      repo_file: pgadmin4.list
+    notes: "PostgreSQL administration and development platform. Official pgAdmin repository. Replace 'jammy' with your Ubuntu codename if different. Verify at: https://www.pgadmin.org/download/pgadmin-4-apt/"
+  
+  sqlitebrowser:
+    method: apt
+    notes: "DB Browser for SQLite - GUI tool for SQLite databases. From Ubuntu default repos."
+  
+  qgis:
+    method: apt
+    repo:
+      key_url: https://qgis.org/downloads/qgis-2022.gpg.key
+      repo_line: "deb [arch=amd64 signed-by=/usr/share/keyrings/qgis-keyring.gpg] https://qgis.org/ubuntu jammy main"
+      repo_file: qgis.list
+    notes: "Geographic Information System for spatial data. Official QGIS repository. Replace 'jammy' with your Ubuntu codename if different. Verify at: https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu"
+  
+  rstudio:
+    method: manual
+    url: https://posit.co/download/rstudio-desktop/
+    notes: "IDE for R programming. Download the Ubuntu .deb file and install with: sudo apt install ./rstudio-*.deb. Requires R to be installed first."
+  
+  positron:
+    method: manual
+    url: https://github.com/posit-dev/positron/releases
+    notes: "Next-generation data science IDE from Posit. Download .deb from GitHub releases and install with: sudo apt install ./positron-*.deb."
+  
+  r-base:
+    method: apt
+    repo:
+      key_url: https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc
+      repo_line: "deb [signed-by=/usr/share/keyrings/r-keyring.gpg] https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
+      repo_file: r-project.list
+    notes: "R programming language and environment. Official CRAN repository for latest R version. Replace 'jammy' with your Ubuntu codename if different. Verify at: https://cloud.r-project.org/bin/linux/ubuntu/"
+
+node:
+  # NVM will be installed first, then Node, then these packages
+  nvm:
+    method: official
+    script: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
+    notes: "Node Version Manager - manages multiple Node.js versions. After installation, restart terminal or run: source ~/.bashrc. Then install Node with: nvm install --lts. Verify version at: https://github.com/nvm-sh/nvm/releases"
+  
+  packages:
+    - "@anthropic-ai/claude-code"  # Install after NVM and Node with: npm install -g @anthropic-ai/claude-code
+
+# Notes on classic confinement (snap):
+# - classic: true = Less sandboxing, more system access (needed for some apps)
+# - classic: false or omitted = Strict confinement, more sandboxed and secure
+# - Classic confinement is required for apps that need full filesystem access or system integration
+# - Examples: IDEs (need file access), browsers (need various system integrations)
+

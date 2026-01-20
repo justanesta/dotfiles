@@ -1,5 +1,6 @@
 README.md
 LICENSE
+setup/
 
 {{- if .isPersonal }}
 # Work-only files - ignore on personal machine
