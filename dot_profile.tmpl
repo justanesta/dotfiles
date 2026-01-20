@@ -11,6 +11,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Custom scripts
+if [ -d "$HOME/code/claude-code-resources/bin" ]; then
+    PATH="$HOME/code/claude-code-resources/bin:$PATH"
+fi
+
 # pyenv: make shims available early on PATH for login shells
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d "$PYENV_ROOT/bin" ]; then
