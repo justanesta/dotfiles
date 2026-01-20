@@ -23,6 +23,11 @@ alias l='ls -CF'
 # Rest of git aliases are in ~/.gitconfig
 alias g='git'
 
+# --- Custom Password Manager Aliases ---
+{{- if eq .chezmoi.os "darwin" }}
+alias uvop="op run --env-file=/Users/anesta/wetpaint_projects/prism-lens/.env.1password -- uv"
+{{- end }}
+
 # --- Disk usage ---
 {{- if eq .chezmoi.os "darwin" }}
 alias du1='du -h -d 1'
