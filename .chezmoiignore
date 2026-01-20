@@ -6,3 +6,8 @@ setup/
 # Work-only files - ignore on personal machine
 .config/secrets/work-api-keys.env
 {{- end }}
+
+{{- if .isWork }}
+# Personal-only files - ignore on work machine
+.config/secrets/personal-api-keys.env
+{{- end }}

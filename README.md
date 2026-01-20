@@ -201,11 +201,13 @@ Secrets are stored in password managers, referenced in templates, and generated 
 ```
 Source (public repo)                         Target (local machine)
 ────────────────────                         ─────────────────────
-api-keys.env.tmpl                     -->    ~/.config/secrets/api-keys.env
+personal-api-keys.env.tmpl                     -->    ~/.config/secrets/personal-api-keys.env
 Contains: pass://Personal/item/field         Contains: ACTUAL_KEY="secret123"
 ```
 
 **Always make secrets sourced in `.bashrc`**
+
+***Potential future option***
 This will make the secrets always available in terminal environments that source `.bashrc`
 
 ```bash
@@ -217,8 +219,8 @@ Add before the `### FUNCTIONS ###` section:
 ```bash
 ### SECRETS ###
 # Source API keys (managed by chezmoi, fetched from password managers)
-if [ -f ~/.config/secrets/api-keys.env ]; then
-    source ~/.config/secrets/api-keys.env
+if [ -f ~/.config/secrets/personal-api-keys.env ]; then
+    source ~/.config/secrets/personal-api-keys.env
 fi
 
 {{- if .isWork }}
@@ -243,7 +245,7 @@ git push
 ```bash
 #!/bin/bash
 # Load API keys
-source ~/.config/secrets/api-keys.env
+source ~/.config/secrets/personal-api-keys.env
 
 # Now use them
 curl "https://api.census.gov/data?key=${CENSUS_API_KEY}&..."
@@ -254,7 +256,7 @@ curl "https://api.census.gov/data?key=${CENSUS_API_KEY}&..."
 import os
 from dotenv import load_dotenv
 
-load_dotenv(os.path.expanduser("~/.config/secrets/api-keys.env"))
+load_dotenv(os.path.expanduser("~/.config/secrets/personal-api-keys.env"))
 
 census_key = os.environ.get("CENSUS_API_KEY")
 ```
@@ -262,7 +264,7 @@ census_key = os.environ.get("CENSUS_API_KEY")
 **Source in R:**
 ```R
 # Using dotenv package
-dotenv::load_dot_env("~/.config/secrets/api-keys.env")
+dotenv::load_dot_env("~/.config/secrets/personal-api-keys.env")
 
 census_key <- Sys.getenv("CENSUS_API_KEY")
 ```
@@ -322,7 +324,7 @@ chezmoi init
 │   ├── git/
 │   │   └── ignore                  # ~/.config/git/ignore
 │   └── private_secrets/
-│       ├── api-keys.env.tmpl       # Shared API keys (ProtonPass)
+│       ├── personal-api-keys.env.tmpl       # Personal API keys (ProtonPass)
 │       └── work-api-keys.env.tmpl  # Work API keys (1Password)
 └── README.md
 ```
