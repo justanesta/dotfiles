@@ -26,6 +26,7 @@ alias g='git'
 # --- Custom Password Manager Aliases ---
 {{- if eq .chezmoi.os "darwin" }}
 alias uvop="op run --env-file=/Users/anesta/wetpaint_projects/prism-lens/.env.1password -- uv"
+alias awsop='op run --env-file=/Users/anesta/wetpaint_projects/prism-lens/.env.1password -- aws'
 {{- end }}
 
 # --- Disk usage ---
