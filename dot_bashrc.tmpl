@@ -127,17 +127,17 @@ fi
 {{- end }}
 
 ### PYENV CONFIG ###
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 
 # Ensure pyenv is on PATH if installed
-if [ -d "$PYENV_ROOT/bin" ]; then
-  export PATH="$PYENV_ROOT/bin:$PATH"
-fi
+# if [ -d "$PYENV_ROOT/bin" ]; then
+#   export PATH="$PYENV_ROOT/bin:$PATH"
+# fi
 
 # Initialize pyenv only if available
-if command -v pyenv >/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# if command -v pyenv >/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
 
 # User-local binaries
 export PATH="$PATH:$HOME/.local/bin"

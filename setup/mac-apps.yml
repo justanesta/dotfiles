@@ -4,7 +4,7 @@
 
 cli_tools:
   - gh                 # GitHub CLI
-  - pyenv              # Python version manager
+  # - pyenv              # Python version manager
   - uv                 # Fast Python package installer
   - pass-cli           # Password manager
   - snowflake-cli      # Snowflake CLI

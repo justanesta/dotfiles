@@ -43,7 +43,7 @@ log_section "Installing CLI Tools"
 
 cli_tools=(
     "gh"
-    "pyenv"
+    # "pyenv"
     "uv"
     "pass-cli"
     "snowflake-cli"

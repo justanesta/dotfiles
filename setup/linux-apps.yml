@@ -31,10 +31,10 @@ cli_tools:
       repo_file: github-cli.list
     notes: "GitHub CLI - official repository from GitHub. Verify at: https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
   
-  pyenv:
-    method: official
-    script: "curl https://pyenv.run | bash"
-    notes: "Python version manager. Adds to shell config automatically. After install, add to ~/.bashrc: export PATH=\"$HOME/.pyenv/bin:$PATH\" && eval \"$(pyenv init --path)\" && eval \"$(pyenv init -)\". Official docs: https://github.com/pyenv/pyenv#installation"
+  # pyenv:
+  #   method: official
+  #   script: "curl https://pyenv.run | bash"
+  #   notes: "Python version manager. Adds to shell config automatically. After install, add to ~/.bashrc: export PATH=\"$HOME/.pyenv/bin:$PATH\" && eval \"$(pyenv init --path)\" && eval \"$(pyenv init -)\". Official docs: https://github.com/pyenv/pyenv#installation"
   
   uv:
     method: official

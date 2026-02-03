@@ -17,14 +17,14 @@ if [ -d "$HOME/code/claude-code-resources/bin" ]; then
 fi
 
 # pyenv: make shims available early on PATH for login shells
-export PYENV_ROOT="$HOME/.pyenv"
-if [ -d "$PYENV_ROOT/bin" ]; then
-    PATH="$PYENV_ROOT/bin:$PATH"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# if [ -d "$PYENV_ROOT/bin" ]; then
+#     PATH="$PYENV_ROOT/bin:$PATH"
+# fi
 
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-fi
+# if command -v pyenv >/dev/null 2>&1; then
+#     eval "$(pyenv init --path)"
+# fi
 
 {{- if eq .chezmoi.os "darwin" }}
 
