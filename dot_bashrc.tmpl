@@ -164,6 +164,7 @@ fi
 #    source <(pass-cli completion bash)
 # fi
 export PROTON_PASS_KEY_PROVIDER=fs
+eval "$(direnv hook bash)"
 {{- end }}
 
 ### FUNCTIONS ###
